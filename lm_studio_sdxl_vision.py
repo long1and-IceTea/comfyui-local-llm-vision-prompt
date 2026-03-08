@@ -18,7 +18,7 @@ class LMStudioSDXLVision:
                 "api_url": ("STRING", {"default": "http://127.0.0.1:1234/v1/chat/completions"}),
                 "system_prompt": ("STRING", {
                     "multiline": True,
-                    "default": "You are a Stable Diffusion XL prompt expert. Describe this image accurately in natural language. Use this structure: [Main Subject], [Action/Pose], [Environment/Background], [Lighting], [Art Style/Camera angle]. Keep it concise, under 50 words, and comma-separated."
+                    "default": "Describe this image accurately in concise natural language for downstream creative AI workflows. Use this structure: [Main Subject], [Action/Pose], [Environment/Background], [Lighting], [Style/Camera angle]. Keep it under 60 words and comma-separated."
                 }),
                 "max_tokens": ("INT", {"default": 150}),
                 "temperature": ("FLOAT", {"default": 0.4, "min": 0.0, "max": 1.0, "step": 0.1}),
@@ -84,4 +84,5 @@ class LMStudioSDXLVision:
             return (f"API Connection Error: Make sure LM Studio server is running. Details: {e}",)
 
 NODE_CLASS_MAPPINGS = {"LMStudioSDXLVision": LMStudioSDXLVision}
-NODE_DISPLAY_NAME_MAPPINGS = {"LMStudioSDXLVision": "LM Studio SDXL Interrogator"}
+NODE_DISPLAY_NAME_MAPPINGS = {"LMStudioSDXLVision": "LM Studio Local LLM Vision"}
+
