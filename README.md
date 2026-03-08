@@ -1,10 +1,11 @@
 ﻿# ComfyUI Local LLM Vision Prompt Node
 
-A ComfyUI custom node that sends an input image to any local LLM service with an OpenAI-compatible API (including LM Studio) and returns concise prompt/caption text.
+A ComfyUI custom node that sends image/text input to any local LLM service with an OpenAI-compatible API (including LM Studio) and returns concise optimized prompt/caption text.
 
 ## Features
 
-- Accepts ComfyUI `IMAGE` input
+- Supports image + text optimization together
+- Supports text-only optimization (image is optional)
 - Encodes image to JPEG base64 for local API transfer
 - Calls OpenAI-compatible `/v1/chat/completions`
 - Filters model reasoning (`<think>...</think>` and `/think ... /endthink`) and returns only final prompt text
@@ -34,11 +35,12 @@ pip install -r requirements.txt
 
 ## Inputs
 
-- `image`: ComfyUI image tensor
+- `input_text`: optional text to optimize/rewrite
+- `image` (optional): ComfyUI image tensor
 - `api_url`: OpenAI-compatible local endpoint
-- `system_prompt`: Prompt template for general image-to-text output
-- `max_tokens`: Output length cap
-- `temperature`: Sampling temperature
+- `system_prompt`: prompt template for image+text optimization behavior
+- `max_tokens`: output length cap (32-4096)
+- `temperature`: sampling temperature
 
 ## Output
 
